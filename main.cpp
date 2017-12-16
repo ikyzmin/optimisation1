@@ -3,6 +3,8 @@
 #include <omp.h>
 #include <stdio.h>
 #include <cstdlib>
+#include <math.h>
+#include <algorithm>
 
 int lengths []= {4,8,10,100,200,500,1000,2000};
 int lengths_for_blocked[] = {4,8,16,128,256,512,1024,2048};
@@ -67,6 +69,15 @@ void matmulTranspose(double **a,double **b,double **c,int size){
             }
         }
     }
+}
+
+void matmulBlock(double **a, double **b,double **c,int size,int block_size){
+    for (int k = 0; k < size; k += block_size)
+        for (int j = 0; j < size; j += block_size)
+            for (int i = 0; i < size; ++i)
+                for (int jj = j; jj < std::min(j + block_size, size); ++jj)
+                    for (int kk = k; kk < std::min(k + block_size, size); ++kk)
+                        c[i][jj] += a[i][kk] * b[kk][jj];
 }
 
 int main() {
@@ -157,6 +168,30 @@ int main() {
         free(a);
         free(b);
         free(c);
+
+    }
+
+    for (int i=0;i<8;i++){
+
+        am = (double**)calloc(lengths[i],sizeof(double*));
+        bm = (double**)calloc(lengths[i],sizeof(double*));
+        cm = (double**)calloc(lengths[i],sizeof(double*));
+
+        for (int j=0;j<lengths[i];j++){
+            am[j] = (double*)calloc(lengths[i], sizeof(double));
+            bm[j] = (double*)calloc(lengths[i], sizeof(double));
+            cm[j] = (double*)calloc(lengths[i], sizeof(double));
+        }
+
+        populateMatrix(am,lengths[i],lengths[i]);
+        populateMatrix(bm,lengths[i],lengths[i]);
+        double start = omp_get_wtime();
+        matmulBlock(am,bm,cm,lengths_for_blocked[i],block_lengths[i]);
+        double end = omp_get_wtime();
+        printf("block matrix multiply (%dx%d) time is %f\n",lengths[i],lengths[i],end-start);
+        free(am);
+        free(bm);
+        free(cm);
 
     }
     return 0;
