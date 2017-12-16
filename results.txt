@@ -1,32 +1,40 @@
-BLAS multiply (4x4) time is 0.000019
+BLAS multiply (4x4) time is 0.000021
 BLAS multiply (8x8) time is 0.000001
 BLAS multiply (10x10) time is 0.000001
-BLAS multiply (100x100) time is 0.000331
-BLAS multiply (200x200) time is 0.002638
-BLAS multiply (500x500) time is 0.035079
-BLAS multiply (1000x1000) time is 0.205747
-BLAS multiply (2000x2000) time is 1.681442
+BLAS multiply (100x100) time is 0.000359
+BLAS multiply (200x200) time is 0.003160
+BLAS multiply (500x500) time is 0.027953
+BLAS multiply (1000x1000) time is 0.189824
+BLAS multiply (2000x2000) time is 1.431143
 matrix multiply (4x4) time is 0.000001
-matrix multiply (8x8) time is 0.000014
-matrix multiply (10x10) time is 0.000009
-matrix multiply (100x100) time is 0.005024
-matrix multiply (200x200) time is 0.073035
-matrix multiply (500x500) time is 1.706052
-matrix multiply (1000x1000) time is 27.298063
-matrix multiply (2000x2000) time is 381.430355
+matrix multiply (8x8) time is 0.000002
+matrix multiply (10x10) time is 0.000005
+matrix multiply (100x100) time is 0.004903
+matrix multiply (200x200) time is 0.064068
+matrix multiply (500x500) time is 1.054687
+matrix multiply (1000x1000) time is 22.277075
+matrix multiply (2000x2000) time is 286.383658
 matrix transpose multiply (4x4) time is 0.000001
-matrix transpose multiply (8x8) time is 0.000004
-matrix transpose multiply (10x10) time is 0.000006
-matrix transpose multiply (100x100) time is 0.007046
-matrix transpose multiply (200x200) time is 0.054455
-matrix transpose multiply (500x500) time is 0.790685
-matrix transpose multiply (1000x1000) time is 7.205442
-matrix transpose multiply (2000x2000) time is 55.187285
+matrix transpose multiply (8x8) time is 0.000003
+matrix transpose multiply (10x10) time is 0.000005
+matrix transpose multiply (100x100) time is 0.004571
+matrix transpose multiply (200x200) time is 0.039651
+matrix transpose multiply (500x500) time is 0.583304
+matrix transpose multiply (1000x1000) time is 5.275789
+matrix transpose multiply (2000x2000) time is 39.256303
 vector multiply (4) time is 0.000001
-vector multiply (8) time is 0.000004
-vector multiply (10) time is 0.000008
-vector multiply (100) time is 0.008178
-vector multiply (200) time is 0.044188
-vector multiply (500) time is 1.221864
-vector multiply (1000) time is 13.534067
-vector multiply (2000) time is 189.048391
+vector multiply (8) time is 0.000002
+vector multiply (10) time is 0.000005
+vector multiply (100) time is 0.004513
+vector multiply (200) time is 0.040452
+vector multiply (500) time is 0.951654
+vector multiply (1000) time is 9.167343
+vector multiply (2000) time is 130.298342
+block matrix multiply (4x4) time is 0.000001
+block matrix multiply (8x8) time is 0.000005
+block matrix multiply (16x16) time is 0.000036
+block matrix multiply (128x128) time is 0.021400
+block matrix multiply (256x256) time is 0.164370
+block matrix multiply (512x512) time is 1.281870
+block matrix multiply (1024x1024) time is 11.380753
+block matrix multiply (2048x2048) time is 123.903216
