@@ -57,7 +57,7 @@ void matmulTranspose(double **a,double **b,double **c,int size){
 
     for (int i=0;i<size;i++){
         for(int j=0;j<size;j++){
-            bT[i,j] = b[j,i];
+            bT[i][j] = b[j][i];
         }
     }
 
@@ -173,22 +173,22 @@ int main() {
 
     for (int i=0;i<8;i++){
 
-        am = (double**)calloc(lengths[i],sizeof(double*));
-        bm = (double**)calloc(lengths[i],sizeof(double*));
-        cm = (double**)calloc(lengths[i],sizeof(double*));
+        am = (double**)calloc(lengths_for_blocked[i],sizeof(double*));
+        bm = (double**)calloc(lengths_for_blocked[i],sizeof(double*));
+        cm = (double**)calloc(lengths_for_blocked[i],sizeof(double*));
 
-        for (int j=0;j<lengths[i];j++){
-            am[j] = (double*)calloc(lengths[i], sizeof(double));
-            bm[j] = (double*)calloc(lengths[i], sizeof(double));
-            cm[j] = (double*)calloc(lengths[i], sizeof(double));
+        for (int j=0;j<lengths_for_blocked[i];j++){
+            am[j] = (double*)calloc(lengths_for_blocked[i], sizeof(double));
+            bm[j] = (double*)calloc(lengths_for_blocked[i], sizeof(double));
+            cm[j] = (double*)calloc(lengths_for_blocked[i], sizeof(double));
         }
 
-        populateMatrix(am,lengths[i],lengths[i]);
-        populateMatrix(bm,lengths[i],lengths[i]);
+        populateMatrix(am,lengths_for_blocked[i],lengths_for_blocked[i]);
+        populateMatrix(bm,lengths_for_blocked[i],lengths_for_blocked[i]);
         double start = omp_get_wtime();
         matmulBlock(am,bm,cm,lengths_for_blocked[i],block_lengths[i]);
         double end = omp_get_wtime();
-        printf("block matrix multiply (%dx%d) time is %f\n",lengths[i],lengths[i],end-start);
+        printf("block matrix multiply (%dx%d) time is %f\n",lengths_for_blocked[i],lengths_for_blocked[i],end-start);
         free(am);
         free(bm);
         free(cm);
